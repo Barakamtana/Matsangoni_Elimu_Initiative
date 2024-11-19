@@ -1,0 +1,123 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Add some padding to the body to prevent content overlap with the fixed navbar */
+body {
+    padding-top: 80px;
+}
+
+
+nav {
+    position: fixed; /* Sticks the navbar to the top */
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    background-color: black; 
+    z-index: 1000; 
+    padding: 0 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.logo img {
+    width: 80px; /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 100%; /* Prevent overflow */
+    object-fit: contain; /* Ensure the image fits nicely inside its container */
+  }
+  
+
+nav ul{
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    
+}
+
+nav ul li{
+    list-style: none;
+    margin: 10px 20px;
+    font-size: 20px;
+    position: relative; /* Needed for dropdown positioning */
+
+}
+
+nav ul li a{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+}
+
+nav ul li a i{
+    font-weight: 400;
+    font-size: 14px;
+}
+
+
+/*  we might reuse this colors
+
+    Olive Green: #808000
+    Soft Grey: #D3D3D3
+    Forest Green: #228B22
+ */
+nav ul li a::after{
+    content: '';
+    width: 0%;
+    height: 3px;
+    background-color: #228B22;
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+}
+
+nav ul li a:hover {
+    color: #228B22; /* Change text color to olive green */
+}
+
+
+nav ul li a:hover::after {
+    width: 100%;
+    transition: 0.5s;
+}
+
+.dropdown{
+    display: none; /* Hide dropdown by default */
+    position: absolute;
+    top: 100%; /* Position it below the parent menu item */
+    left: 0;
+    background-color: #f9f9f9; /* Light background for the dropdown */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    z-index: 1000; /* Ensure it appears above other elements */
+}
+
+.dropdown li {
+    width: 150px; /* Adjust dropdown width */
+}
+
+.dropdown li a {
+    color: black; 
+    text-decoration: none;
+    font-weight: 400; /* default font*/
+    font-size: 18px;
+}
+
+/* Show dropdown on hover */
+nav ul li:hover .dropdown {
+    display: block;
+}
+
+/* Dropdown link hover effect */
+.dropdown li a:hover {
+    color: #228B22; /* Olive green background */
+}
+
+
