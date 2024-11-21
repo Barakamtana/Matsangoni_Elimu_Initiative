@@ -33,6 +33,11 @@ nav {
   }
   
 
+html {
+    scroll-behavior: smooth; /* Enables smooth scrolling */
+}
+
+
 nav ul{
     display: flex;
     align-items: center;
@@ -60,13 +65,13 @@ nav ul li a i{
     font-size: 14px;
 }
 
-
 /*  we might reuse this colors
 
     Olive Green: #808000
     Soft Grey: #D3D3D3
     Forest Green: #228B22
  */
+
 nav ul li a::after{
     content: '';
     width: 0%;
@@ -88,7 +93,10 @@ nav ul li a:hover::after {
 }
 
 .dropdown{
-    display: none; /* Hide dropdown by default */
+    display: block; /* Always occupy space but hide initially */
+    opacity: 0; /* Start fully transparent */
+    visibility: hidden; /* Ensure it's not focusable when hidden */
+    /* display: none; Hide dropdown by default */
     position: absolute;
     top: 100%; 
     left: 0;
@@ -97,6 +105,9 @@ nav ul li a:hover::after {
     margin: 0;
     padding: 0;
     z-index: 1000; /* Ensure it appears above other elements */
+    transform: translateY(-10px); /* Start 10px higher for the rising effect */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition for opacity and position */
+
 }
 
 .dropdown li {
@@ -112,7 +123,10 @@ nav ul li a:hover::after {
 
 /* Show dropdown on hover */
 nav ul li:hover .dropdown {
-    display: block;
+    opacity: 1; /* Fully visible on hover */
+    visibility: visible; /* Make it focusable */
+    /* display: block; */
+    transform: translateY(0); /* Reset position to its normal place */
 }
 
 
